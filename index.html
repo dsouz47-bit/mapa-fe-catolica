@@ -12,9 +12,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Entenda a Bíblia de Gênesis a Apocalipse com mapas mentais visuais e didáticos. Um guia completo para católicos aprofundarem seus estudos na Palavra de Deus.">
     <title>Mapa da Bíblia - Entenda a Palavra de Deus de forma simples</title>
+    
+    <!-- Optimized Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"></noscript>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Alpine.js for carousel functionality - deferred to not block rendering -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -159,11 +163,11 @@
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                <span class="text-gray-700 font-bold ml-2">4.96/5 de 2.464 usuários</span>
+                <span class="text-gray-800 font-bold ml-2">4.96/5 de 2.464 usuários</span>
             </div>
 
             <h1 class="text-4xl md:text-5xl font-extrabold text-blue-800 mb-4 leading-tight">Entenda a Bíblia de forma simples e viva a transformação da Palavra de Deus.</h1>
-            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">Um jeito fácil e eficiente, aprovado por milhares de católicos, para aprender a Palavra de Deus de forma simples. Nunca mais diga que não consegue entender a Bíblia.</p>
+            <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-8">Um jeito fácil e eficiente, aprovado por milhares de católicos, para aprender a Palavra de Deus de forma simples. Nunca mais diga que não consegue entender a Bíblia.</p>
             
             <!-- Product Carousel Start -->
             <div x-data="{
@@ -206,9 +210,9 @@
                 </button>
 
                 <!-- Indicators -->
-                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-3">
                     <template x-for="(slide, index) in slides" :key="index">
-                        <button @click="activeSlide = index; resetLoop()" :class="{'bg-white': activeSlide === index, 'bg-white/50': activeSlide !== index}" class="w-3 h-3 rounded-full" :aria-label="'Ir para o slide ' + (index + 1)"></button>
+                        <button @click="activeSlide = index; resetLoop()" :class="{'bg-white': activeSlide === index, 'bg-white/50': activeSlide !== index}" class="w-4 h-4 rounded-full" :aria-label="'Ir para o slide ' + (index + 1)"></button>
                     </template>
                 </div>
                 <div class="pt-[66.66%]"></div> <!-- Aspect Ratio Placeholder -->
@@ -225,7 +229,7 @@
         <section class="py-16">
             <div class="text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-2">O que estão dizendo sobre o Mapa da Bíblia.</h2>
-                <p class="text-lg text-gray-600 mb-8">O Mapa da Bíblia é incrível e milhares de católicos concordam com isso.</p>
+                <p class="text-lg text-gray-700 mb-8">O Mapa da Bíblia é incrível e milhares de católicos concordam com isso.</p>
                 <div class="flex justify-center items-center space-x-2 text-yellow-500 mb-10">
                     <!-- 5 Stars -->
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
@@ -233,7 +237,7 @@
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                    <span class="text-gray-700 font-semibold ml-2">4.96/5 de 2.464 usuários</span>
+                    <span class="text-gray-800 font-semibold ml-2">4.96/5 de 2.464 usuários</span>
                 </div>
             </div>
 
@@ -271,7 +275,7 @@
 
                 <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/Group-587-1%20(1).webp?raw=true" alt="Apresentação do Mapa da Bíblia em diversos dispositivos" class="rounded-lg shadow-xl mb-8 w-full" loading="lazy" decoding="async">
 
-                <div class="space-y-6 text-left md:text-lg text-gray-700">
+                <div class="space-y-6 text-left md:text-lg text-gray-800">
                     <p>O <strong>Mapa da Bíblia</strong> são resumos visuais da Bíblia, conforme a tradição católica e a Bíblia Ave Maria, preparando você para explorar e compreender a palavra de Deus em sua totalidade — simplificando a riqueza dos ensinamentos de cada livro sagrado.</p>
                     <p>Com o <strong>Mapa da Bíblia</strong>, você poderá se dedicar ao estudo diário da Bíblia com entusiasmo, equipado com um guia eficaz para navegar pelas escrituras e suas múltiplas dimensões.</p>
                     <p>Essa é a <strong>melhor forma de aprimorar seu conhecimento bíblico</strong>, estudando com confiança e vivenciando uma transformação espiritual profunda ao mergulhar nos ensinamentos de cada livro da Sagrada Escritura.</p>
@@ -307,7 +311,7 @@
                         </div>
                         
                         <!-- Testimonial Text -->
-                        <p class="text-gray-700 mt-4 text-lg">"Me surpreendi com a clareza e profundidade que o material traz para o estudo da Bíblia Sagrada."</p>
+                        <p class="text-gray-800 mt-4 text-lg">"Me surpreendi com a clareza e profundidade que o material traz para o estudo da Bíblia Sagrada."</p>
                     </div>
                 </div>
             </div>
@@ -326,7 +330,7 @@
                     <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/genesis-preview-1.webp?raw=true" alt="Exemplo do Mapa do livro de Gênesis" class="rounded-lg shadow-lg" loading="lazy" decoding="async">
                     <div>
                         <h3 class="text-3xl font-bold text-blue-800 mb-3">Mapa dos 73 Livros.</h3>
-                        <p class="text-gray-600 mb-4">Explore cada um dos 73 livros da Bíblia de forma clara e estruturada, com resumos e elementos essenciais que facilitam o entendimento da Palavra de Deus.</p>
+                        <p class="text-gray-700 mb-4">Explore cada um dos 73 livros da Bíblia de forma clara e estruturada, com resumos e elementos essenciais que facilitam o entendimento da Palavra de Deus.</p>
                         <ul class="space-y-2">
                             <li class="flex items-center"><svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Resumo do livro</li>
                             <li class="flex items-center"><svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Simbologias e temas centrais</li>
@@ -343,7 +347,7 @@
                     </div>
                     <div class="md:order-1">
                         <h3 class="text-3xl font-bold text-blue-800 mb-3">Panorama da Bíblia.</h3>
-                        <p class="text-gray-600 mb-4">Entenda como a Bíblia está organizada, explorando suas divisões, seções e categorias literárias. Esse guia ajuda a visualizar a conexão entre os livros e a mensagem central das Escrituras.</p>
+                        <p class="text-gray-700 mb-4">Entenda como a Bíblia está organizada, explorando suas divisões, seções e categorias literárias. Esse guia ajuda a visualizar a conexão entre os livros e a mensagem central das Escrituras.</p>
                         <ul class="space-y-2">
                             <li class="flex items-center"><svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Antigo e Novo Testamento</li>
                             <li class="flex items-center"><svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Seções e Livros</li>
@@ -357,7 +361,7 @@
                     <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/mockup-crono%20(1).webp?raw=true" alt="Exemplo do material de Eventos Cronológicos" class="rounded-lg shadow-lg" loading="lazy" decoding="async">
                     <div>
                         <h3 class="text-3xl font-bold text-blue-800 mb-3">Eventos Cronológicos.</h3>
-                        <p class="text-gray-600 mb-4">Compreenda a sequência dos principais acontecimentos bíblicos em ordem cronológica, facilitando o entendimento da história da salvação e sua conexão ao longo dos tempos.</p>
+                        <p class="text-gray-700 mb-4">Compreenda a sequência dos principais acontecimentos bíblicos em ordem cronológica, facilitando o entendimento da história da salvação e sua conexão ao longo dos tempos.</p>
                         <ul class="space-y-2">
                             <li class="flex items-center"><svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Linha do Tempo Bíblica</li>
                             <li class="flex items-center"><svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Conexões Entre Eventos</li>
@@ -372,7 +376,7 @@
                     </div>
                     <div class="md:order-1">
                         <h3 class="text-3xl font-bold text-blue-800 mb-3">Registros da Fé.</h3>
-                        <p class="text-gray-600 mb-4">Um espaço dedicado para registrar insights, reflexões e aprendizados, ajudando a aplicar os ensinamentos bíblicos no seu dia a dia.</p>
+                        <p class="text-gray-700 mb-4">Um espaço dedicado para registrar insights, reflexões e aprendizados, ajudando a aplicar os ensinamentos bíblicos no seu dia a dia.</p>
                         <ul class="space-y-2">
                             <li class="flex items-center"><svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Espaço para anotações</li>
                             <li class="flex items-center"><svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Versículos e reflexões</li>
@@ -387,19 +391,19 @@
         <section class="py-16 bg-blue-50 rounded-lg">
             <div class="text-center mb-10">
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-2">Aprovado por +1.000 fiéis católicos.</h2>
-                <p class="text-lg text-gray-600">Nossos mapas são incríveis e quem tem acesso concorda com isso.</p>
+                <p class="text-lg text-gray-700">Nossos mapas são incríveis e quem tem acesso concorda com isso.</p>
             </div>
             <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <p class="text-gray-600 mb-4">"Antes, me sentia perdido ao tentar entender certos livros da Bíblia. O Mapa me trouxe uma visão panorâmica que fez toda a diferença!"</p>
+                    <p class="text-gray-700 mb-4">"Antes, me sentia perdido ao tentar entender certos livros da Bíblia. O Mapa me trouxe uma visão panorâmica que fez toda a diferença!"</p>
                     <p class="font-bold text-blue-700">— Eduardo Mendes</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <p class="text-gray-600 mb-4">"Com o Mapa da Bíblia, finalmente consegui conectar os ensinamentos e histórias da Bíblia de maneira lógica. Meu estudo nunca foi tão proveitoso!"</p>
+                    <p class="text-gray-700 mb-4">"Com o Mapa da Bíblia, finalmente consegui conectar os ensinamentos e histórias da Bíblia de maneira lógica. Meu estudo nunca foi tão proveitoso!"</p>
                     <p class="font-bold text-blue-700">— Ricardo Silva</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <p class="text-gray-600 mb-4">"Entender o contexto de cada livro me ajudou a aplicar os ensinamentos da Bíblia na minha vida. Sou muito grato por esse material!"</p>
+                    <p class="text-gray-700 mb-4">"Entender o contexto de cada livro me ajudou a aplicar os ensinamentos da Bíblia na minha vida. Sou muito grato por esse material!"</p>
                     <p class="font-bold text-blue-700">— Fábio Nunes</p>
                 </div>
             </div>
@@ -409,7 +413,7 @@
         <section class="py-16 bg-blue-50/50">
             <div class="text-center mb-12 max-w-4xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-2">O que você receberá no Mapa da Bíblia?</h2>
-                <p class="text-lg text-gray-600">São mais de 250 páginas exclusivas!</p>
+                <p class="text-lg text-gray-700">São mais de 250 páginas exclusivas!</p>
             </div>
             <div class="max-w-5xl mx-auto space-y-12">
                 <!-- Arquivos Digitais -->
@@ -417,7 +421,7 @@
                     <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/tudo.webp?raw=true" alt="Arquivos Digitais do Mapa da Bíblia em PDF" class="rounded-lg w-full" loading="lazy" decoding="async">
                     <div>
                         <h3 class="font-bold text-2xl mb-3 text-blue-800">Arquivos Digitais</h3>
-                        <p class="text-gray-700 text-lg">Material em PDF para acessar no celular, tablet ou computador e estudar em qualquer lugar, incluindo: Mapa dos 73 Livros, Eventos Cronológicos, Panorama Bíblico, Registros da Fé e muito mais! São mais de 250 páginas.</p>
+                        <p class="text-gray-800 text-lg">Material em PDF para acessar no celular, tablet ou computador e estudar em qualquer lugar, incluindo: Mapa dos 73 Livros, Eventos Cronológicos, Panorama Bíblico, Registros da Fé e muito mais! São mais de 250 páginas.</p>
                     </div>
                 </div>
                 <!-- Área de Membros -->
@@ -425,7 +429,7 @@
                      <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/mockup-ii-mdb.webp?raw=true" alt="Área de Membros do curso em um notebook" class="rounded-lg w-full" loading="lazy" decoding="async">
                     <div>
                         <h3 class="font-bold text-2xl mb-3 text-blue-800">Área de Membros</h3>
-                        <p class="text-gray-700 text-lg">Todo o material acessível em nossa área de membros a qualquer momento e acesso vitalício, baixe quantas vezes quiser.</p>
+                        <p class="text-gray-800 text-lg">Todo o material acessível em nossa área de membros a qualquer momento e acesso vitalício, baixe quantas vezes quiser.</p>
                     </div>
                 </div>
             </div>
@@ -442,21 +446,21 @@
                     <span class="inline-block bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded-full mb-4">BÔNUS #1</span>
                     <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/plano-preview.webp?raw=true" alt="Bônus 1: Plano de Leitura da Bíblia" class="mx-auto rounded-lg mb-4 w-full h-auto shadow-md" loading="lazy" decoding="async">
                     <h3 class="font-bold text-xl text-blue-800 mb-2">Plano de Leitura</h3>
-                    <p class="text-gray-600">Plano de Leitura da Bíblia com metas capítulo a capítulo para te incentivar a aprofundar seu estudo.</p>
+                    <p class="text-gray-700">Plano de Leitura da Bíblia com metas capítulo a capítulo para te incentivar a aprofundar seu estudo.</p>
                 </div>
                 <!-- Bonus 2 -->
                 <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-yellow-400 transform hover:scale-105 transition-transform duration-300">
                     <span class="inline-block bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded-full mb-4">BÔNUS #2</span>
                     <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/diario-de-oracao.webp?raw=true" alt="Bônus 2: Diário da Oração" class="mx-auto rounded-lg mb-4 w-full h-auto shadow-md" loading="lazy" decoding="async">
                     <h3 class="font-bold text-xl text-blue-800 mb-2">Diário da Oração</h3>
-                    <p class="text-gray-600">Planner dedicado para aprofundar sua experiência com a Palavra de Deus através da Lectio Divina.</p>
+                    <p class="text-gray-700">Planner dedicado para aprofundar sua experiência com a Palavra de Deus através da Lectio Divina.</p>
                 </div>
                 <!-- Bonus 3 -->
                 <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-yellow-400 transform hover:scale-105 transition-transform duration-300">
                     <span class="inline-block bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded-full mb-4">BÔNUS #3</span>
                     <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/imprimiveis-iii.webp?raw=true" alt="Bônus 3: Versão Imprimível dos mapas" class="mx-auto rounded-lg mb-4 w-full h-auto shadow-md" loading="lazy" decoding="async">
                     <h3 class="font-bold text-xl text-blue-800 mb-2">Versão Imprimível</h3>
-                    <p class="text-gray-600">Receba os arquivos em alta qualidade e as instruções para imprimir e encadernar seus mapas.</p>
+                    <p class="text-gray-700">Receba os arquivos em alta qualidade e as instruções para imprimir e encadernar seus mapas.</p>
                 </div>
             </div>
         </section>
@@ -494,7 +498,7 @@
         <section class="py-16 text-center">
             <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/garantia.webp?raw=true" alt="Selo de Garantia de 30 Dias" class="mx-auto mb-6 h-36 w-auto" loading="lazy" decoding="async">
             <h2 class="text-3xl font-bold text-blue-800 mb-4">30 Dias de Garantia.</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Confiamos tanto na qualidade do nosso material, que oferecemos garantia de 30 dias! Caso não fique totalmente satisfeito, devolveremos 100% do seu dinheiro, dentro deste prazo.</p>
+            <p class="text-lg text-gray-800 max-w-3xl mx-auto">Confiamos tanto na qualidade do nosso material, que oferecemos garantia de 30 dias! Caso não fique totalmente satisfeito, devolveremos 100% do seu dinheiro, dentro deste prazo.</p>
         </section>
         
         <!-- FAQ -->
@@ -610,7 +614,7 @@
                         <span class="font-bold text-lg text-blue-900">${item.question}</span>
                         <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div class="p-4 bg-white text-gray-700 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="p-4 bg-white text-gray-800 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
                         <p>${item.answer}</p>
                     </div>
                 `;
