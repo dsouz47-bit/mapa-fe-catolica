@@ -10,12 +10,13 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Entenda a Bíblia de Gênesis a Apocalipse com mapas mentais visuais e didáticos. Um guia completo para católicos aprofundarem seus estudos na Palavra de Deus.">
     <title>Mapa da Bíblia - Entenda a Palavra de Deus de forma simples</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- Alpine.js for carousel functionality -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js for carousel functionality - deferred to not block rendering -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         html {
@@ -95,6 +96,42 @@
         .carousel-button.next {
             right: 1rem;
         }
+        /* YouTube Lazy Load Styles */
+        .youtube-lazy-load {
+            position: relative;
+            cursor: pointer;
+            display: block;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+             /* 9:16 Aspect Ratio for YouTube Short */
+            padding-top: 177.77%;
+        }
+        .youtube-lazy-load img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .youtube-lazy-load .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 68px;
+            height: 48px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        .youtube-lazy-load:hover .play-button {
+            background: rgba(255,0,0,0.8);
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -156,22 +193,22 @@
                          x-transition:leave="transition-opacity ease-in-out duration-500"
                          x-transition:leave-start="opacity-100"
                          x-transition:leave-end="opacity-0">
-                        <img :src="slide" class="w-full h-full object-cover" alt="Visualização dos Mapas da Bíblia">
+                        <img :src="slide" class="w-full h-full object-cover" alt="Visualização dos Mapas da Bíblia" loading="eager" decoding="async">
                     </div>
                 </template>
 
                 <!-- Navigation Buttons -->
-                <button @click="activeSlide = (activeSlide - 1 + slides.length) % slides.length; resetLoop()" class="carousel-button prev">
+                <button @click="activeSlide = (activeSlide - 1 + slides.length) % slides.length; resetLoop()" class="carousel-button prev" aria-label="Slide anterior">
                     &#10094;
                 </button>
-                <button @click="activeSlide = (activeSlide + 1) % slides.length; resetLoop()" class="carousel-button next">
+                <button @click="activeSlide = (activeSlide + 1) % slides.length; resetLoop()" class="carousel-button next" aria-label="Próximo slide">
                     &#10095;
                 </button>
 
                 <!-- Indicators -->
                 <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
                     <template x-for="(slide, index) in slides" :key="index">
-                        <button @click="activeSlide = index; resetLoop()" :class="{'bg-white': activeSlide === index, 'bg-white/50': activeSlide !== index}" class="w-3 h-3 rounded-full"></button>
+                        <button @click="activeSlide = index; resetLoop()" :class="{'bg-white': activeSlide === index, 'bg-white/50': activeSlide !== index}" class="w-3 h-3 rounded-full" :aria-label="'Ir para o slide ' + (index + 1)"></button>
                     </template>
                 </div>
                 <div class="pt-[66.66%]"></div> <!-- Aspect Ratio Placeholder -->
@@ -202,13 +239,13 @@
 
             <!-- Social Proof Carousel -->
             <div class="flex overflow-x-auto space-x-4 pb-4 testimonial-carousel">
-                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-10.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96">
-                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-12.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96">
-                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-13.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96">
-                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-14.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96">
-                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-15.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96">
-                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-16.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96">
-                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-4.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96">
+                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-10.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96" alt="Depoimento de cliente satisfeito 1" loading="lazy" decoding="async">
+                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-12.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96" alt="Depoimento de cliente satisfeito 2" loading="lazy" decoding="async">
+                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-13.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96" alt="Depoimento de cliente satisfeito 3" loading="lazy" decoding="async">
+                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-14.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96" alt="Depoimento de cliente satisfeito 4" loading="lazy" decoding="async">
+                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-15.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96" alt="Depoimento de cliente satisfeito 5" loading="lazy" decoding="async">
+                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-16.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96" alt="Depoimento de cliente satisfeito 6" loading="lazy" decoding="async">
+                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/st-4.webp?raw=true" class="rounded-lg shadow-md flex-shrink-0 h-96" alt="Depoimento de cliente satisfeito 7" loading="lazy" decoding="async">
             </div>
 
             <!-- Animated Arrow -->
@@ -222,14 +259,17 @@
             <div class="text-center max-w-4xl mx-auto">
                  <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-8">De Gênesis a Apocalipse: conheça toda a Bíblia através de mapas didáticos de todos os livros, na visão católica.</h2>
                 
-                <!-- YouTube Video Embed for Short -->
+                <!-- YouTube Lazy Load Facade -->
                 <div class="mb-12 max-w-sm mx-auto">
-                    <div class="relative w-full shadow-2xl rounded-lg overflow-hidden" style="padding-top: 177.77%;"> <!-- 9:16 Aspect Ratio -->
-                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/hIr9tZWbV3U" title="Vídeo de Apresentação do Mapa da Bíblia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div id="youtube-player" class="youtube-lazy-load" data-video-id="hIr9tZWbV3U">
+                        <img src="https://i.ytimg.com/vi/hIr9tZWbV3U/hqdefault.jpg" alt="Pré-visualização do Vídeo de Apresentação do Mapa da Bíblia" loading="lazy" decoding="async">
+                        <div class="play-button">
+                            <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%"><path class="ytp-large-play-button-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#fff"></path><path d="M 45,24 27,14 27,34" fill="#000"></path></svg>
+                        </div>
                     </div>
                 </div>
-                
-                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/Group-587-1%20(1).webp?raw=true" alt="Apresentação do Mapa da Bíblia" class="rounded-lg shadow-xl mb-8 w-full">
+
+                <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/Group-587-1%20(1).webp?raw=true" alt="Apresentação do Mapa da Bíblia em diversos dispositivos" class="rounded-lg shadow-xl mb-8 w-full" loading="lazy" decoding="async">
 
                 <div class="space-y-6 text-left md:text-lg text-gray-700">
                     <p>O <strong>Mapa da Bíblia</strong> são resumos visuais da Bíblia, conforme a tradição católica e a Bíblia Ave Maria, preparando você para explorar e compreender a palavra de Deus em sua totalidade — simplificando a riqueza dos ensinamentos de cada livro sagrado.</p>
@@ -248,7 +288,7 @@
             <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg border border-gray-200">
                 <div class="flex items-start space-x-4">
                     <!-- Profile Picture -->
-                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/foto-depo.webp?raw=true" alt="Foto de Maria Antonia" class="w-16 h-16 rounded-full object-cover">
+                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/foto-depo.webp?raw=true" alt="Foto de Maria Antonia" class="w-16 h-16 rounded-full object-cover" loading="lazy" decoding="async">
                     
                     <div class="flex-1">
                         <!-- Name and Stars -->
@@ -283,7 +323,7 @@
             <div class="space-y-12">
                 <!-- Item 1 -->
                 <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/genesis-preview-1.webp?raw=true" alt="Mapa dos 73 Livros" class="rounded-lg shadow-lg">
+                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/genesis-preview-1.webp?raw=true" alt="Exemplo do Mapa do livro de Gênesis" class="rounded-lg shadow-lg" loading="lazy" decoding="async">
                     <div>
                         <h3 class="text-3xl font-bold text-blue-800 mb-3">Mapa dos 73 Livros.</h3>
                         <p class="text-gray-600 mb-4">Explore cada um dos 73 livros da Bíblia de forma clara e estruturada, com resumos e elementos essenciais que facilitam o entendimento da Palavra de Deus.</p>
@@ -299,7 +339,7 @@
                 <!-- Item 2 -->
                 <div class="grid md:grid-cols-2 gap-8 items-center">
                     <div class="md:order-2">
-                        <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/panorama-estrutura.webp?raw=true" alt="Panorama da Bíblia" class="rounded-lg shadow-lg">
+                        <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/panorama-estrutura.webp?raw=true" alt="Estrutura do Panorama da Bíblia" class="rounded-lg shadow-lg" loading="lazy" decoding="async">
                     </div>
                     <div class="md:order-1">
                         <h3 class="text-3xl font-bold text-blue-800 mb-3">Panorama da Bíblia.</h3>
@@ -314,7 +354,7 @@
                 </div>
                 <!-- Item 3 -->
                 <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/mockup-crono%20(1).webp?raw=true" alt="Eventos Cronológicos" class="rounded-lg shadow-lg">
+                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/mockup-crono%20(1).webp?raw=true" alt="Exemplo do material de Eventos Cronológicos" class="rounded-lg shadow-lg" loading="lazy" decoding="async">
                     <div>
                         <h3 class="text-3xl font-bold text-blue-800 mb-3">Eventos Cronológicos.</h3>
                         <p class="text-gray-600 mb-4">Compreenda a sequência dos principais acontecimentos bíblicos em ordem cronológica, facilitando o entendimento da história da salvação e sua conexão ao longo dos tempos.</p>
@@ -328,7 +368,7 @@
                 <!-- Item 4 -->
                 <div class="grid md:grid-cols-2 gap-8 items-center">
                     <div class="md:order-2">
-                        <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/mockup-planners%20(1).webp?raw=true" alt="Registros da Fé" class="rounded-lg shadow-lg">
+                        <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/mockup-planners%20(1).webp?raw=true" alt="Exemplo do material Registros da Fé" class="rounded-lg shadow-lg" loading="lazy" decoding="async">
                     </div>
                     <div class="md:order-1">
                         <h3 class="text-3xl font-bold text-blue-800 mb-3">Registros da Fé.</h3>
@@ -374,7 +414,7 @@
             <div class="max-w-5xl mx-auto space-y-12">
                 <!-- Arquivos Digitais -->
                 <div class="bg-white p-8 rounded-lg shadow-lg grid md:grid-cols-2 gap-8 items-center">
-                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/tudo.webp?raw=true" alt="Arquivos Digitais do Mapa da Bíblia" class="rounded-lg w-full">
+                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/tudo.webp?raw=true" alt="Arquivos Digitais do Mapa da Bíblia em PDF" class="rounded-lg w-full" loading="lazy" decoding="async">
                     <div>
                         <h3 class="font-bold text-2xl mb-3 text-blue-800">Arquivos Digitais</h3>
                         <p class="text-gray-700 text-lg">Material em PDF para acessar no celular, tablet ou computador e estudar em qualquer lugar, incluindo: Mapa dos 73 Livros, Eventos Cronológicos, Panorama Bíblico, Registros da Fé e muito mais! São mais de 250 páginas.</p>
@@ -382,7 +422,7 @@
                 </div>
                 <!-- Área de Membros -->
                 <div class="bg-white p-8 rounded-lg shadow-lg grid md:grid-cols-2 gap-8 items-center">
-                     <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/mockup-ii-mdb.webp?raw=true" alt="Área de Membros" class="rounded-lg w-full">
+                     <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/mockup-ii-mdb.webp?raw=true" alt="Área de Membros do curso em um notebook" class="rounded-lg w-full" loading="lazy" decoding="async">
                     <div>
                         <h3 class="font-bold text-2xl mb-3 text-blue-800">Área de Membros</h3>
                         <p class="text-gray-700 text-lg">Todo o material acessível em nossa área de membros a qualquer momento e acesso vitalício, baixe quantas vezes quiser.</p>
@@ -400,21 +440,21 @@
                 <!-- Bonus 1 -->
                 <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-yellow-400 transform hover:scale-105 transition-transform duration-300">
                     <span class="inline-block bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded-full mb-4">BÔNUS #1</span>
-                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/plano-preview.webp?raw=true" alt="Bônus 1: Plano de Leitura" class="mx-auto rounded-lg mb-4 w-full h-auto shadow-md">
+                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/plano-preview.webp?raw=true" alt="Bônus 1: Plano de Leitura da Bíblia" class="mx-auto rounded-lg mb-4 w-full h-auto shadow-md" loading="lazy" decoding="async">
                     <h3 class="font-bold text-xl text-blue-800 mb-2">Plano de Leitura</h3>
                     <p class="text-gray-600">Plano de Leitura da Bíblia com metas capítulo a capítulo para te incentivar a aprofundar seu estudo.</p>
                 </div>
                 <!-- Bonus 2 -->
                 <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-yellow-400 transform hover:scale-105 transition-transform duration-300">
                     <span class="inline-block bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded-full mb-4">BÔNUS #2</span>
-                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/diario-de-oracao.webp?raw=true" alt="Bônus 2: Diário da Oração" class="mx-auto rounded-lg mb-4 w-full h-auto shadow-md">
+                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/diario-de-oracao.webp?raw=true" alt="Bônus 2: Diário da Oração" class="mx-auto rounded-lg mb-4 w-full h-auto shadow-md" loading="lazy" decoding="async">
                     <h3 class="font-bold text-xl text-blue-800 mb-2">Diário da Oração</h3>
                     <p class="text-gray-600">Planner dedicado para aprofundar sua experiência com a Palavra de Deus através da Lectio Divina.</p>
                 </div>
                 <!-- Bonus 3 -->
                 <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-yellow-400 transform hover:scale-105 transition-transform duration-300">
                     <span class="inline-block bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded-full mb-4">BÔNUS #3</span>
-                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/imprimiveis-iii.webp?raw=true" alt="Bônus 3: Versão Imprimível" class="mx-auto rounded-lg mb-4 w-full h-auto shadow-md">
+                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/imprimiveis-iii.webp?raw=true" alt="Bônus 3: Versão Imprimível dos mapas" class="mx-auto rounded-lg mb-4 w-full h-auto shadow-md" loading="lazy" decoding="async">
                     <h3 class="font-bold text-xl text-blue-800 mb-2">Versão Imprimível</h3>
                     <p class="text-gray-600">Receba os arquivos em alta qualidade e as instruções para imprimir e encadernar seus mapas.</p>
                 </div>
@@ -432,7 +472,7 @@
                 </div>
 
                 <div class="bg-white text-gray-800 p-8 rounded-lg shadow-2xl text-center">
-                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/Capa-MDB-semfundo.webp?raw=true" alt="Capa Mapa da Bíblia" class="mx-auto mb-6 w-full max-w-xs">
+                    <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/Capa-MDB-semfundo.webp?raw=true" alt="Capa do produto Mapa da Bíblia" class="mx-auto mb-6 w-full max-w-xs">
                     <p class="text-2xl">De <del>R$ 97,00</del> por APENAS</p>
                     <p class="text-7xl font-black text-blue-700 my-2">5x de R$ 6,27</p>
                     <p class="text-2xl">ou R$ 27,00 à vista no Pix</p>
@@ -452,7 +492,7 @@
 
         <!-- Guarantee -->
         <section class="py-16 text-center">
-            <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/garantia.webp?raw=true" alt="Selo de Garantia de 30 Dias" class="mx-auto mb-6 h-36 w-auto">
+            <img src="https://github.com/dsouz47-bit/mapa-fe-catolica/blob/main/garantia.webp?raw=true" alt="Selo de Garantia de 30 Dias" class="mx-auto mb-6 h-36 w-auto" loading="lazy" decoding="async">
             <h2 class="text-3xl font-bold text-blue-800 mb-4">30 Dias de Garantia.</h2>
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">Confiamos tanto na qualidade do nosso material, que oferecemos garantia de 30 dias! Caso não fique totalmente satisfeito, devolveremos 100% do seu dinheiro, dentro deste prazo.</p>
         </section>
@@ -521,6 +561,33 @@
                 yearElement.textContent = new Date().getFullYear();
             }
         }
+        
+        // YouTube Lazy Load
+        function lazyLoadYouTube() {
+            const player = document.getElementById('youtube-player');
+            if (!player) return;
+
+            player.addEventListener('click', function() {
+                const videoId = this.dataset.videoId;
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allowfullscreen', '');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+                
+                iframe.style.position = 'absolute';
+                iframe.style.top = '0';
+                iframe.style.left = '0';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                
+                iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?rel=0&showinfo=0&autoplay=1`);
+                
+                // Clear the facade content and append the iframe
+                this.innerHTML = '';
+                this.appendChild(iframe);
+            }, { once: true });
+        }
+
 
         // Script for FAQ Accordion
         const faqData = [
@@ -539,7 +606,7 @@
                 const faqItem = document.createElement('div');
                 faqItem.className = 'border border-gray-300 rounded-lg overflow-hidden';
                 faqItem.innerHTML = `
-                    <button class="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 flex justify-between items-center focus:outline-none">
+                    <button class="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 flex justify-between items-center focus:outline-none" aria-expanded="false">
                         <span class="font-bold text-lg text-blue-900">${item.question}</span>
                         <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
@@ -554,23 +621,26 @@
                 const button = e.target.closest('button');
                 if (!button) return;
 
-                const allContents = container.querySelectorAll('.max-h-0');
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
                 const content = button.nextElementSibling;
                 const icon = button.querySelector('svg');
 
                 // Close all other FAQ items
                 container.querySelectorAll('button').forEach(otherButton => {
                     if (otherButton !== button) {
-                        otherButton.nextElementSibling.style.maxHeight = '0px';
+                        otherButton.setAttribute('aria-expanded', 'false');
+                        otherButton.nextElementSibling.style.maxHeight = null;
                         otherButton.querySelector('svg').style.transform = 'rotate(0deg)';
                     }
                 });
 
                 // Toggle the clicked item
-                if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-                    content.style.maxHeight = '0px';
+                if (isExpanded) {
+                    button.setAttribute('aria-expanded', 'false');
+                    content.style.maxHeight = null;
                     icon.style.transform = 'rotate(0deg)';
                 } else {
+                    button.setAttribute('aria-expanded', 'true');
                     content.style.maxHeight = content.scrollHeight + 'px';
                     icon.style.transform = 'rotate(180deg)';
                 }
@@ -583,6 +653,7 @@
             setCurrentDate();
             setFooterYear();
             createFaq();
+            lazyLoadYouTube();
         });
     </script>
 
